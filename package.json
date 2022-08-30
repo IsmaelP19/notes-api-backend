@@ -6,17 +6,20 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build:ui": "rm -rf build && cd ../part1/frontend && npm run build --prod && cp -r build ../../backend_heroku/",
+    "build:ui": "rm -rf build && cd ../frontend && npm run build --prod && cp -r build ../backend/",
     "deploy": "git push heroku main",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail",
+    "copy:root":"cd ../part1/backend && cp -ru ./* ../../backend_heroku/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ismael Pérez",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mongoose": "^6.5.3",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
